@@ -5,12 +5,14 @@ import Gallery from './pages/Gallery';
 import FloorPlan from './pages/FloorPlan';
 import Location from './pages/Location';
 import Contact from './pages/Contact';
+import Header from './components/Header';
 
 
 
 function App() {
   return (
     <BrowserRouter>
+    <Header/>
     <Routes>
     <Route path="/" element={<Overview />}/>
     <Route path="/amenities" element={<Amenities />}/>
