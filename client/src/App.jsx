@@ -7,6 +7,7 @@ import Location from './pages/Location';
 import Contact from './pages/Contact';
 import Header from './components/Header';
 import Signup from './pages/Signup';
+import SignIn from './pages/SignIn';
 
 
 
@@ -22,6 +23,7 @@ function App() {
     <Route path="/location" element={<Location/>}/>
     <Route path="/contact" element={<Contact/>}/>
     <Route path="/signup" element={<Signup/>}/>
+    <Route path="/signIn" element={<SignIn/>}/>
     </Routes>
  
     </BrowserRouter>

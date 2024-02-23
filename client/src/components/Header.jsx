@@ -19,7 +19,7 @@ function Header() {
     <Link to='/floor-plan'><li className='hidden sm:inline text-zinc-50 hover:underline'>FLOOR PLAN</li></Link>
     <Link to='/location'><li className='hidden sm:inline text-zinc-50 hover:underline'>LOCATION</li></Link>
     <Link to='/contact'><li className='sm:inline text-zinc-50 hover:underline'>CONTACT</li></Link>
-    <Link to='/signup'><li className='sm:inline text-zinc-50 hover:underline'>SIGNUP</li></Link>
+    <Link to='/signup'><li className='sm:inline text-zinc-50 hover:underline'>SIGNIN</li></Link>
     </ul>
 
     <div className='p-3 rounded-lg flex items-center'>
