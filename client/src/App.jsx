@@ -6,6 +6,7 @@ import FloorPlan from './pages/FloorPlan';
 import Location from './pages/Location';
 import Contact from './pages/Contact';
 import Header from './components/Header';
+import Signup from './pages/Signup';
 
 
 
@@ -20,6 +21,7 @@ function App() {
     <Route path="/floor-plan" element={<FloorPlan />}/>
     <Route path="/location" element={<Location/>}/>
     <Route path="/contact" element={<Contact/>}/>
+    <Route path="/signup" element={<Signup/>}/>
     </Routes>
  
     </BrowserRouter>
