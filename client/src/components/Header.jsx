@@ -2,9 +2,11 @@
 import { Link } from 'react-router-dom';
 import { FaWhatsapp } from "react-icons/fa";
 import img from '../assets/logonew.png';
+import {useSelector} from 'react-redux';
 
 
 function Header() {
+  const {currentUser}=useSelector(state => state.user)
   return (
     <header className='bg-amber-950 shadow-md'>
          <div className='flex justify-between items-center max-width-6xl mx-auto p-3'>
@@ -19,7 +21,14 @@ function Header() {
     <Link to='/floor-plan'><li className='hidden sm:inline text-zinc-50 hover:underline'>FLOOR PLAN</li></Link>
     <Link to='/location'><li className='hidden sm:inline text-zinc-50 hover:underline'>LOCATION</li></Link>
     <Link to='/contact'><li className='sm:inline text-zinc-50 hover:underline'>CONTACT</li></Link>
-    <Link to='/signup'><li className='sm:inline text-zinc-50 hover:underline'>SIGNIN</li></Link>
+    <Link to='/profile'>
+    {currentUser ? (
+      <img className='rounded-full h-7 w-7 object-cover'  src={currentUser.avatar} alt='profile'/>
+    ): ( 
+      <li className='sm:inline text-zinc-50 hover:underline'>SIGNIN</li>
+      
+    )}
+    </Link>
     </ul>
 
     <div className='p-3 rounded-lg flex items-center'>

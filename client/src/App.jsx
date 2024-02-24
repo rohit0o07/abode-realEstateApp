@@ -8,6 +8,8 @@ import Contact from './pages/Contact';
 import Header from './components/Header';
 import Signup from './pages/Signup';
 import SignIn from './pages/SignIn';
+import Profile from './pages/Profile';
+import PrivateRoute from './components/PrivateRoute';
 
 
 
@@ -24,6 +26,9 @@ function App() {
     <Route path="/contact" element={<Contact/>}/>
     <Route path="/signup" element={<Signup/>}/>
     <Route path="/signIn" element={<SignIn/>}/>
+    <Route element={<PrivateRoute/>}>
+    <Route path="/profile" element={<Profile/>}/>
+    </Route>
     </Routes>
  
     </BrowserRouter>
