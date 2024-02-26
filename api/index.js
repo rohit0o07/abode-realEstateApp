@@ -7,8 +7,10 @@ import cookieParser from "cookie-parser";
 import listingRouter from "./routes/listing.route.js";
 dotenv.config();
 
-mongoose.connect(process.env.MONGO).then(()=>{
-    console.log('Connected to MongoDb1');
+mongoose
+    .connect(process.env.MONGO)
+    .then(()=>{
+    console.log('Connected to MongoDb!');
 })
 .catch((err) => {
     console.log(err);
