@@ -10,6 +10,7 @@ import Signup from './pages/Signup';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
 import PrivateRoute from './components/PrivateRoute';
+import CreateListing from './pages/CreateListing';
 
 
 
@@ -28,6 +29,7 @@ function App() {
     <Route path="/signIn" element={<SignIn/>}/>
     <Route element={<PrivateRoute/>}>
     <Route path="/profile" element={<Profile/>}/>
+    <Route path="/create-listing" element={<CreateListing/>}/>
     </Route>
     </Routes>
  
