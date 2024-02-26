@@ -2,7 +2,7 @@ import {useSelector} from 'react-redux'
 import {useEffect, useRef, useState} from 'react'
 import {getDownloadURL, getStorage,ref,uploadBytesResumable} from 'firebase/storage'
 import {app} from '../firebase';
-import { deleteUserFailure, updateUserStart,updateUserFailure,updateUserSuccess, deleteUserStart, deleteUserSuccess } from '../redux/user/userSlice.js';
+import { deleteUserFailure, updateUserStart,updateUserFailure,updateUserSuccess, deleteUserStart, deleteUserSuccess, signOutUserStart } from '../redux/user/userSlice.js';
 import {useDispatch} from 'react-redux';
 
 export default function Profile() {
@@ -33,31 +33,31 @@ export default function Profile() {
         const uploadTask = uploadBytesResumable(storageRef,file);
 
 
-        uploadTask.on('state_changed',
+        uploadTask.on(
+            'state_changed',
         (snapshot) => {
-            const progress = (snapshot.bytesTransferred /
-            snapshot.totalBytes) * 100;
+            const progress = 
+            (snapshot.bytesTransferred /snapshot.totalBytes) * 100;
             setFilePerc(Math.round(progress));
         },
         (error) => {
             setFileUploadError(true);
         },
         () => {
-            getDownloadURL(uploadTask.snapshot.ref).then
-            ((downloadURl) =>
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURl) =>
                 setFormData({...formData,avatar:downloadURl})
                 );
         }
         );
 
-        
-    };
+    } 
+    
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.id] :e.target.value});
     }
 
-    const handleSubmit =async(e) => {
+    const handleSubmit =async (e) => {
         e.preventDefault();
         try{
             dispatch(updateUserStart());
@@ -97,6 +97,22 @@ export default function Profile() {
             dispatch(deleteUserSuccess(data));
         }catch(error){
             dispatch(deleteUserFailure(error.message))
+        }
+    }
+
+    const handleSignOut = async () => {
+        try{
+            dispatch(signOutUserStart())
+           const res = await fetch('api/user/signout');
+           const data = await res.json();
+           if(data.success === false){
+            dispatch(deleteUserFailure(data.message));
+            return;
+           }
+            
+           dispatch(deleteUserSuccess(data));
+        }catch(error){
+            dispatch(deleteUserFailure(data.message));
         }
     }
   return (
@@ -156,8 +172,8 @@ export default function Profile() {
             </button>
      </form>
      <div className='flex justify-between mt-5'> 
-        <span onClick={handleDeleteUser} className='text-amber-950 cursor-pointer'>Delete account</span>
-        <span className='text-amber-950 cursor-pointer'>Sign out</span>
+        <span onClick={handleDeleteUser}  className='text-amber-950 cursor-pointer'>Delete account</span>
+        <span onClick={handleSignOut} className='text-amber-950 cursor-pointer'>Sign out</span>
      </div>
      <p className='text-amber-950 mt-5'>{error ? error:''}</p>
      <p className='text-green-700 mt-5'>
