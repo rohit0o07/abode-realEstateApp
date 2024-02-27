@@ -186,7 +186,7 @@ export default function Profile() {
           ) : filePerc === 100 ? (
             <span className="text-green-700">Image Successfully Uploaded!</span>
           ) : (
-            ''
+            ""
           )}
         </p>
         <input
@@ -216,7 +216,7 @@ export default function Profile() {
           disabled={loading}
           className="bg-yellow-600  text-amber-950 rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
         >
-          {loading ? 'Loading...' : 'Update'}
+          {loading ? "Loading..." : "Update"}
         </button>
         <Link
           className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95"
@@ -236,9 +236,9 @@ export default function Profile() {
           Sign out
         </span>
       </div>
-      <p className="text-amber-950 mt-5">{error ? error :''}</p>
+      <p className="text-amber-950 mt-5">{error ? error : ""}</p>
       <p className="text-green-700 mt-5">
-        {updateSuccess ? "User is updated Successfully!" : ''}
+        {updateSuccess ? "User is updated Successfully!" : ""}
       </p>
       <button onClick={handleShowListings} className="text-green-700 w-full">
         Show Listings
@@ -277,7 +277,9 @@ export default function Profile() {
                 >
                   Delete
                 </button>
-                <button className="text-red-700 uppercase">Edit</button>
+                <Link to={`/update-listing/${listing._id}`}>
+                  <button className="text-red-700 uppercase">Edit</button>
+                </Link>
               </div>
             </div>
           ))}

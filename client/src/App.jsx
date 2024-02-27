@@ -11,6 +11,7 @@ import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import CreateListing from './pages/CreateListing';
+import UpdateListing from './pages/UpdateListing';
 
 
 
@@ -25,11 +26,13 @@ function App() {
     <Route path="/floor-plan" element={<FloorPlan />}/>
     <Route path="/location" element={<Location/>}/>
     <Route path="/contact" element={<Contact/>}/>
-    <Route path="/signup" element={<Signup/>}/>
+    <Route path="/sign-up" element={<Signup/>}/>
     <Route path="/signIn" element={<SignIn/>}/>
     <Route element={<PrivateRoute/>}>
     <Route path="/profile" element={<Profile/>}/>
     <Route path="/create-listing" element={<CreateListing/>}/>
+    <Route path="/update-listing/:listingId" element={<UpdateListing/>}/>
+    
     </Route>
     </Routes>
  
