@@ -17,7 +17,7 @@ export const updateUser = async (req, res, next) => {
       req.body.password = bcryptjs.hashSync(req.body.password, 10);
     }
 
-    const updateUser = await User.findByIdAndUpdate(
+    const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       {
         $set: {
@@ -30,7 +30,7 @@ export const updateUser = async (req, res, next) => {
       { new: true }
     );
 
-    const { password, ...rest } = updateUser._doc;
+    const { password, ...rest } = updatedUser._doc;
 
     res.status(200).json(rest);
   } catch (error) {
@@ -58,7 +58,6 @@ export const getUserListings = async(req,res,next) => {
     }catch(error){
       next(error)
     }
-
   }else{
     return next(errorHandler(401,'You can only view your own listings!'));
   }
