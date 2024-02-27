@@ -369,7 +369,7 @@ export default function CreateListing() {
                 hover:opacity-95 
                 disabled:opacity-80"
           >
-            {loading ? 'Creating' : 'Update listing'}
+            {loading ? 'Updating...' : 'Update listing'}
           </button>
           {error && <p className="text-red-700 text-sm">{error}</p>}
         </div>
