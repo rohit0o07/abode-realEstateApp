@@ -11,6 +11,7 @@ function Header() {
   const {currentUser}=useSelector(state => state.user);
   const [searchTerm,setSearchTerm] = useState('');
   const navigate = useNavigate();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const urlParams = new URLSearchParams(window.location.search);
@@ -18,6 +19,15 @@ function Header() {
     const searchQuery = urlParams.toString();
     navigate(`/search?${searchQuery}`);
   }
+
+  useEffect(()=>{
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTermFormUrl = urlParams.get('searchTerm');
+    if(searchTermFromUrl) {
+      setSearchTerm(searchTermFormUrl);
+
+    }
+  },[location.search])
   return (
     <header className='bg-amber-950 shadow-md'>
     <div className='flex justify-between items-center max-width-6xl mx-auto p-3'>
@@ -25,7 +35,7 @@ function Header() {
       <img src={img} alt="logo" className='flex flex-wrap h-16 w-20' />
     </Link>
     <form onSubmit={handleSubmit} 
-    className='bg-slate-100 p-3 rounded-lg flex items-center'>
+          className='bg-slate-100 p-3 rounded-lg flex items-center'>
       <input 
         type='text'
         placeholder='Search...'
