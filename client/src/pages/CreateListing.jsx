@@ -51,7 +51,7 @@ export default function CreateListing() {
           setUploading(false);
         })
         .catch((err) => {
-          setImageUploadError("image upload failed (2 mb max per image)");
+          setImageUploadError("Image upload failed (2 mb max per image)");
           setUploading(false);
         });
     } else {
@@ -92,22 +92,31 @@ export default function CreateListing() {
   };
 
   const handleChange = (e) => {
-    if(e.target.id === 'sale' || e.target.id === 'rent'){
+    if(
+      e.target.id === 'sale' || 
+      e.target.id === 'rent'){
         setFormData({
             ...formData,
-            type:e.target.id
+            type:e.target.id,
         })
     }
-    if(e.target.id ==='parking' || e.target.id ==='furnished' || e.target.id === 'offer'){
+    if(
+      e.target.id ==='parking' || 
+      e.target.id ==='furnished' || 
+      e.target.id === 'offer'){
         setFormData({
             ...formData,
-            [e.target.id]:e.target.checked
+            [e.target.id]:e.target.checked,
         })
     }
-   if(e.target.type === 'number' || e.target.type === 'text' || e.target.type === 'textarea'){
+   if(
+      e.target.type === 'number' || 
+      e.target.type === 'text' || 
+      e.target.type === 'textarea'
+      ){
     setFormData({
         ...formData,
-        [e.target.id]:e.target.value
+        [e.target.id]:e.target.value,
         
     })
    }

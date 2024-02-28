@@ -20,7 +20,7 @@ export default function SignIn(){
         e.preventDefault();
         try{
             dispatch(signInStart());
-            const res = await fetch('/api/auth/signin',{
+            const res = await fetch('/api/auth/sign-in',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',
@@ -63,7 +63,7 @@ export default function SignIn(){
             <button  
                 disabled={loading} 
                 className='bg-yellow-600  text-amber-950 p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>
-                {loading ? 'Loading...':'Sign In'}
+                {loading ? 'Loading...':'SignIn'}
             </button>
             <OAuth/>
         </form>
