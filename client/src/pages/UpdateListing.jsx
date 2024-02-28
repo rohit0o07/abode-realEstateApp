@@ -34,10 +34,10 @@ export default function CreateListing() {
   const[loading,setLoading] = useState(false);
   
 
-  useEffect(()=>{
+  useEffect(() => {
     const fetchListing = async() => {
         const listingId = params.listingId;
-        const res = await(`/api/listing/get/${listingId}`);
+        const res = await fetch(`/api/listing/get/${listingId}`);
         const data = await res.json();
         if(data.success === false) {
             console.log(data.message);
@@ -46,7 +46,9 @@ export default function CreateListing() {
         setFormData(data);
     }
     fetchListing();
-  },[])
+  },[]);
+
+
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUploading(true);
@@ -99,6 +101,8 @@ export default function CreateListing() {
       );
     });
   };
+
+
   const handleRemoveImage = (index) => {
     setFormData({
       ...formData,
@@ -113,17 +117,20 @@ export default function CreateListing() {
             type:e.target.id
         })
     }
-    if(e.target.id ==='parking' || e.target.id ==='furnished' || e.target.id === 'offer'){
+    if(e.target.id ==='parking' ||
+       e.target.id ==='furnished' || 
+       e.target.id === 'offer'){
         setFormData({
             ...formData,
             [e.target.id]:e.target.checked
         })
     }
-   if(e.target.type === 'number' || e.target.type === 'text' || e.target.type === 'textarea'){
-    setFormData({
+   if(e.target.type === 'number' || 
+      e.target.type === 'text' || 
+      e.target.type === 'textarea'){
+      setFormData({
         ...formData,
-        [e.target.id]:e.target.value
-        
+        [e.target.id]:e.target.value   
     })
    }
   };

@@ -80,8 +80,10 @@ export default function Search() {
         if(
             e.target.id === 'parking' || 
             e.target.id === 'furnished' || 
-            e.target.id === 'offer'){
-            setSidebardata({...sidebardata,
+            e.target.id === 'offer')
+            {
+            setSidebardata({
+                ...sidebardata,
                 [e.target.id]:
                 e.target.checked || 
                 e.target.checked === 'true' ? true:false,
@@ -110,6 +112,8 @@ export default function Search() {
         const searchQuery = urlParams.toString();
         navigate(`/search?${searchQuery}`)
     }
+
+
     const onShowMoreClick = async () => {
       const numberOfListings = listings.length;
       const startIndex = numberOfListings;
@@ -126,9 +130,7 @@ export default function Search() {
   return (
     <div className="flex flex-col md:flex-row ">
       <div className="p-7 border-b-2 md:border-r-2 md:min-h-screen">
-        <form onSubmit={handleSubmit}
-        
-        className="flex flex-col gap-8">
+        <form onSubmit={handleSubmit}  className="flex flex-col gap-8">
             <div className="flex items-center gap-2">
                 <label 
                     className="whitespace-nowrap font-semibold">

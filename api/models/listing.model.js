@@ -52,9 +52,10 @@ const listingSchema = new mongoose.Schema(
             required:true,
         },
 
-    },{timeStamps:true}
+    },
+    {timeStamps:true}
 )
 
 const Listing = mongoose.model('Listing',listingSchema);
 
-export default Listing
+export default Listing;

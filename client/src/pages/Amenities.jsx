@@ -1,8 +1,9 @@
-import React from 'react'
 
 function Amenities() {
   return (
-    <div>Amenities</div>
+    <div>
+      hi
+    </div>
   )
 }
 

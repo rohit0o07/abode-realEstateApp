@@ -115,7 +115,7 @@ export default function Profile() {
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch(`/api/auth/sign-out`);
+      const res = await fetch(`/api/auth/signout`);
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message)); /// changed for data.message from chatgpt
@@ -168,8 +168,9 @@ export default function Profile() {
           type="file"
           ref={fileRef}
           hidden
-          accept="image/*"
+          accept='image/*'
         />
+        
         <img
           onClick={() => fileRef.current.click()}
           src={formData.avatar || currentUser.avatar}
@@ -186,7 +187,7 @@ export default function Profile() {
           ) : filePerc === 100 ? (
             <span className="text-green-700">Image Successfully Uploaded!</span>
           ) : (
-            ""
+            ''
           )}
         </p>
         <input
@@ -216,7 +217,7 @@ export default function Profile() {
           disabled={loading}
           className="bg-yellow-600  text-amber-950 rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
         >
-          {loading ? "Loading..." : "Update"}
+          {loading ? 'Loading...' : 'Update'}
         </button>
         <Link
           className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95"
@@ -236,15 +237,16 @@ export default function Profile() {
           Sign out
         </span>
       </div>
-      <p className="text-amber-950 mt-5">{error ? error : ""}</p>
+      
+      <p className="text-amber-950 mt-5">{error ? error : ''}</p>
       <p className="text-green-700 mt-5">
-        {updateSuccess ? "User is updated Successfully!" : ""}
+        {updateSuccess ? "User is updated Successfully!" : ''}
       </p>
       <button onClick={handleShowListings} className="text-green-700 w-full">
         Show Listings
       </button>
       <p className="text-red-700 mt-5">
-        {showListingsError ? "Error showing listings" : " "}
+        {showListingsError ? "Error showing listings" : ''}
       </p>
       {userListings && userListings.length > 0 && (
         <div className="flex flex-col gap-4">
@@ -260,7 +262,7 @@ export default function Profile() {
                 <img
                   src={listing.imageUrls[0]}
                   alt="listing cover"
-                  className="h-16 w-16 object-contain rounded-lg"
+                  className="h-16 w-16 object-contain "
                 />
               </Link>
               <Link

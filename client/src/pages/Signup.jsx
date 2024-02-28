@@ -1,9 +1,10 @@
-import { useState } from 'react'
-import {Link,useNavigate} from 'react-router-dom';
-import OAuth from '../components/OAuth';
+
+import { useState } from "react";
+import { Link,useNavigate } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 
-const SignUp = () => {
+export default function SignUp() {
     const [formData,setFormData] = useState({})
     const [error,setError] = useState(null);
     const [loading,setLoading] = useState(false);
@@ -34,7 +35,7 @@ const SignUp = () => {
         }
         setLoading(false);
         setError(null);
-        navigate('/signIn');
+        navigate('/sign-in');
         } 
         catch (error) {
            setLoading(false);
@@ -73,7 +74,7 @@ const SignUp = () => {
         </form>
         <div className='flex gap-2 mt-5 '>
             <p>Have an account?</p>
-            <Link to={"/signIn"}>
+            <Link to={"/sign-in"}>
                 <span className='text-amber-950 '>Sign In</span>
             </Link>
         </div>
@@ -82,4 +83,3 @@ const SignUp = () => {
   )
 }
 
-export default SignUp;

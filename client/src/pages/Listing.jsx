@@ -24,7 +24,7 @@ export default function Listing() {
   const [contact, setContact] = useState(false);
   const params = useParams();
   const { currentUser } = useSelector((state) => state.user);
-  
+
   useEffect(() => {
     const fetchListing = async () => {
       try {
@@ -32,6 +32,8 @@ export default function Listing() {
         const res = await fetch(`/api/listing/get/${params.listingId}`);
         const data = await res.json();
         if (data.success === false) {
+          setError(true);
+          setLoading(false);
           return;
         }
         setListing(data);
@@ -90,7 +92,7 @@ export default function Listing() {
               {listing.offer
                 ? listing.discountPrice.toLocaleString("en-US")
                 : listing.regularPrice.toLocaleString("en-US")}
-              {listing.type === "rent" && " / month"}
+              {listing.type === "rent" && "/ month"}
             </p>
             <p className="flex items-center mt-6 gap-2 text-slate-600  text-sm">
               <FaMapMarkerAlt className="text-green-700" />
