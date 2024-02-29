@@ -112,20 +112,20 @@ export default function Profile() {
   }
  }
 
-  const handleSignOut = async () => {
-    try {
-      dispatch(signOutUserStart());
-      const res = await fetch(`/api/auth/sign-out`);
-      const data = await res.json();
-      if (data.success === false) {
-        dispatch(deleteUserFailure(data.message)); /// changed for data.message from chatgpt
-        return;
-      }
-      dispatch(deleteUserSuccess(data));
-    } catch (error) {
-      dispatch(deleteUserFailure(error.message)); //changed to data.message from chatgpt
+ const handleSignOut =async() => {
+  try{
+    dispatch(signOutUserStart())
+    const res = await fetch('/api/auth/signout');
+    const data = await res.json();
+    if(data.success === false) {
+      dispatch(deleteUserFailure(data.message));
+      return;
     }
-  };
+    dispatch(deleteUserSuccess(data));
+  }catch(error){
+    dispatch(deleteUserFailure(data.message));
+  }
+ }
 
   const handleShowListings = async () => {
     try {
