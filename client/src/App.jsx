@@ -4,7 +4,7 @@ import Amenities from './pages/Amenities';
 import Gallery from './pages/Gallery';
 import FloorPlan from './pages/FloorPlan';
 import Location from './pages/Location';
-import Contact from './components/Contact';
+import ContactUs from './pages/ContactUs';
 import Header from './components/Header';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
@@ -27,7 +27,7 @@ export default function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/floor-plan" element={<FloorPlan />} />
         <Route path="/location" element={<Location />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/search" element={<Search />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />

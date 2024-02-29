@@ -13,7 +13,7 @@ import {
   FaParking,
   FaShare,
 } from "react-icons/fa";
-import Contact from "../components/Contact";
+import Contact from '../components/Contact.jsx';
 
 export default function Listing() {
   SwiperCore.use([Navigation]); // install modules (if necessary)
@@ -58,14 +58,7 @@ export default function Listing() {
           <Swiper navigation>
             {listing.imageUrls.map((url) => (
               <SwiperSlide key={url}>
-                <div
-                  className="h-[550px]"
-                  style={{
-                    background: `url(${url})
-                        center no-repeat`,
-                    backgroundSize: "cover",
-                  }}
-                ></div>
+                <div className='h-[750px]' style={{ background: `url(${url}) center no-repeat`,backgroundSize: "cover",}}></div>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -134,15 +127,15 @@ export default function Listing() {
                 {listing.furnished ? "Furnished" : "Unfurnished"}
               </li>
             </ul>
-            {currentUser && listing.userRef !== currentUser._id && !contact && (
+            {currentUser &&  listing.userRef !== currentUser._id && !contact && (
               <button
                 onClick={() => setContact(true)}
-                className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3"
-              >
+                className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3">
                 Contact landlord
               </button>
             )}
-            {contact && <Contact listing={listing} />}
+            {contact && <Contact listing={listing}/>}
+            
           </div>
         </div>
       )}

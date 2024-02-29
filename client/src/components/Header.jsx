@@ -71,7 +71,7 @@ function Header() {
               LOCATION
             </li>
           </Link>
-          <Link to="/contact">
+          <Link to="/contact-us">
             <li className="sm:inline text-zinc-50 hover:underline">CONTACT</li>
           </Link>
           <Link to="/profile">
