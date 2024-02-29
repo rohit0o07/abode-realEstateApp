@@ -10,28 +10,29 @@ import {useNavigate} from 'react-router-dom';
 
 
 export default function CreateListing() {
-    const {currentUser} = useSelector((state) => state.user)
+    const { currentUser } = useSelector((state) => state.user);
     const navigate = useNavigate();
-  const [files, setFiles] = useState([]);
-  const [formData, setFormData] = useState({
-    imageUrls: [],
-    name: "",
-    description: "",
-    address: "",
-    type: "rent",
-    bedrooms: 1,
-    bathrooms: 1,
-    regularPrice: 50,
-    discountPrice: 0,
-    offer: false,
-    parking: false,
-    furnished: false,
-  });
+    const [files, setFiles] = useState([]);
+    const [formData, setFormData] = useState({
+      imageUrls: [],
+      name: "",
+      description: "",
+      address: "",
+      type: "rent",
+      bedrooms: 1,
+      bathrooms: 1,
+      regularPrice: 50,
+      discountPrice: 0,
+      offer: false,
+      parking: false,
+      furnished: false,
+    });
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [error,setError] = useState(false);
-  const[loading,setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   console.log(formData);
+  
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUploading(true);
@@ -41,12 +42,8 @@ export default function CreateListing() {
       for (let i = 0; i < files.length; i++) {
         promises.push(storeImage(files[i]));
       }
-      Promise.all(promises)
-        .then((urls) => {
-          setFormData({
-            ...formData,
-            imageUrls: formData.imageUrls.concat(urls),
-          });
+      Promise.all(promises).then((urls) => {
+          setFormData({...formData,imageUrls: formData.imageUrls.concat(urls),});
           setImageUploadError(false);
           setUploading(false);
         })
@@ -116,7 +113,7 @@ export default function CreateListing() {
       ){
     setFormData({
         ...formData,
-        [e.target.id]:e.target.value,
+        [e.target.id]: e.target.value,
         
     });
    }
@@ -125,28 +122,26 @@ export default function CreateListing() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (formData.imageUrls.length < 1)
-        return setError("You must upload at least one image");
-      if (+formData.regularPrice < +formData.discountPrice)
-        return setError("Discount price must be lower than regular price");
+      if(formData.imageUrls.length < 1 ) return setError('You must upload at least one image')
+      if(+formData.regularPrice < + formData.discountPrice) return setError('Discount price must be lower than reqular price')
       setLoading(true);
       setError(false);
-      const res = await fetch('/api/listing/create', {
-        method: 'POST',
+      const res = await fetch('/api/listing/create',{
+        method:'POST',
         headers: {
-          "content-Type": "application/json",
+          'Content-Type':'application/json',
+
         },
-        body: JSON.stringify({
+        body:JSON.stringify({
           ...formData,
-          useRef: currentUser._id,
-        }),
+          userRef : currentUser._id,})
       });
       const data = await res.json();
       setLoading(false);
-      if (data.success === false) {
+      if(data.success === false){
         setError(data.message);
       }
-      navigate(`/listing/$ ${data._id}`);
+      navigate(`/listing/${data._id}`)
     } catch (error) {
       setError(error.message);
       setLoading(false);
@@ -284,32 +279,30 @@ export default function CreateListing() {
               </div>
             </div>
             {formData.offer && (
-                 <div className="flex items-center gap-2">
-                 <input
-                   type="number"
-                   id="discountPrice"
-                   min="0"
-                   max="10000000"
-                   required
-                   className="p-3 border border-gray-300 rounded-lg"
-                   onChange={handleChange}
-                   value={formData.discountPrice}
-                 />
-                 <div className="flex flex-col items-center ">
-                   <p>Discounted price</p>
-                   <span className="text-xs">($ / month)</span>
-                 </div>
-               </div>
-
+              <div className="flex items-center gap-2">
+                <input
+                  type="number"
+                  id="discountPrice"
+                  min="0"
+                  max="10000000"
+                  required
+                  className="p-3 border border-gray-300 rounded-lg"
+                  onChange={handleChange}
+                  value={formData.discountPrice}
+                />
+                <div className="flex flex-col items-center ">
+                  <p>Discounted price</p>
+                  <span className="text-xs">($ / month)</span>
+                </div>
+              </div>
             )}
-           
           </div>
         </div>
         <div className="flex flex-col flex-1 gap-4">
           <p className="font-semibold">
             Images:
             <span className="font-normal text-gray-600 ml-2">
-              the first images will be the cover(max 6)
+              The first images will be the cover(max 6)
             </span>
           </p>
           <div className="flex gap-4">
@@ -328,18 +321,15 @@ export default function CreateListing() {
               className="p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg
                     disabled:opacity-80"
             >
-              {uploading ? "Uploading..." : "Upload"}
+              {uploading ? 'Uploading...' : 'Upload'}
             </button>
           </div>
-          <p className="text-red-700">
-            {imageUploadError && imageUploadError}</p>
-          {formData.imageUrls.length > 0 &&
+          <p className="text-red-700">{imageUploadError && imageUploadError}</p>
+          {
+            formData.imageUrls.length > 0 &&
             formData.imageUrls.map((url, index) => (
-              <div
-                key={url}
-                className="flex justify-between p-3 border 
-                            items-center"
-              >
+              <div key={url} 
+              className="flex justify-between p-3 border  items-center">
                 <img
                   src={url}
                   alt="listing image"
@@ -364,7 +354,7 @@ export default function CreateListing() {
                 hover:opacity-95 
                 disabled:opacity-80"
           >
-            {loading ? 'Creating...' : 'Create listing'}
+            {loading ? "Creating..." : "Create listing"}
           </button>
           {error && <p className="text-red-700 text-sm">{error}</p>}
         </div>

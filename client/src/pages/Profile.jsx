@@ -17,7 +17,7 @@ import {
   signOutUserStart,
 } from "../redux/user/userSlice.js";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 export default function Profile() {
   const { currentUser, loading, error } = useSelector((state) => state.user);
