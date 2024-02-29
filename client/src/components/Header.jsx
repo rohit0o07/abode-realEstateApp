@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaWhatsapp } from "react-icons/fa";
-import img from "../assets/logonew.png";
+import img from "../assets/logo1.png";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
