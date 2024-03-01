@@ -1,44 +1,22 @@
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css'
-import img1 from '../assets/carousels/part6.png'
-import img2 from '../assets/carousels/part7.png'
-import img3 from '../assets/carousels/part6.png'
-import img4 from '../assets/logo.png'
+
+import { cardList } from './data.js'
 export default function Amenities() {
-    const settings = {
-      dots:true,
-      infinite:true,
-      speed:500,
-      slidesToShow:1,
-      slidesToScroll:1,
-      
-    }
+    
   return (
-    <Slider {...settings}>
-      <div className="flex bg-amber-950 shadow">
-        <div>
-          <img src={img4} alt="Logo" />
-          <br />
-          <h1 className="text-amber-300">Luxury Gated Apartments</h1>
-          <br />
-          <br />
-          <h2 className="text-amber-300">
-            Living spaces in sainikpuri,
-            <br />
-            Hyderabad.
-          </h2>
-          <br />
-          <br />
-          <h2 className="text-amber-300">Ready to Move-In</h2>
-          <br />
-          <br />
-          <button className="text-amber-300">Download Brochure</button>
-          <img src={img1} alt="Slide 1" className="w-4/12 h-6/12" />
-          <img src={img2} alt="Slide 1" className="w-4/12 h-6/12" />
-          <img src={img3} alt="Slide 3" className="w-4/12 h-6/12" />
-        </div> 
+    <main className="container mx-auto py-36 px-8 bg-amber-950">
+      <div className="grid lg:grid-cols-4  md:grid-cols-2  grid-cols-1 gap-6">
+      {cardList.map((card,index) => (
+        <div key={index}
+        className='shadow-lg rounded-lg'>
+        <img className='rounded-t-lg items-center attachment-full w-[350px] h-[300px] ' src={card.img} alt="" />
+        <div className='p-5'>
+        <h3 className='text-3xl font-bold  mb-3 text-yellow-500'>{card.title}</h3>
+        <p className='text-lg font-normal text-gray-600 mb-2 text-yellow-100'>{card.text}</p>
+        </div>
+        </div>
+      ))}
       </div>
-    </Slider>
-  );
+      </main>
+   
+  )
 }

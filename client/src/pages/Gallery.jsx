@@ -1,14 +1,24 @@
+import { gallaryList } from "./gallary";
 
 
 export default function Gallery() {
   return (
-    <div className='py-20 px-4 max-w-6xl mx-auto'> 
-      <h1 className='text-3xl font-bold mb-4 text-slate-800'>Sterling Adobe Estate</h1>
-      <p className='mb-4 text-slate-700'>Sterling adobe Estate is a leading real estate agency that specializes in helping clients buy, sell, and rent properties in the most desirable neighborhoods. Our team of experienced agents is dedicated to providing exceptional service and making the buying and selling process as smooth as possible.</p>
-      <p className='mb-4 text-slate-700'>
-      Our mission is to help our clients achieve their real estate goals by providing expert advice, personalized service, and a deep understanding of the local market. Whether you are looking to buy, sell, or rent a property, we are here to help you every step of the way.
-      </p>
-      <p className='mb-4 text-slate-700'>Our team of agents has a wealth of experience and knowledge in the real estate industry, and we are committed to providing the highest level of service to our clients. We believe that buying or selling a property should be an exciting and rewarding experience, and we are dedicated to making that a reality for each and every one of our clients.</p>
+    <div>
+      <h1 className="  text-center  bg-amber-950 text-yellow-500  font-bold text-3xl">Gallery</h1>
+      <main className="container mx-auto py-36 px-8 bg-amber-950">
+      
+      <div className="grid lg:grid-cols-3  md:grid-cols-2  grid-cols-1 gap-6">
+        
+      {gallaryList.map((card,index) => (
+        <div key={index}
+        className='shadow-lg rounded-lg'>
+        <img className='rounded-t-lg attachment-full w-full h-[300px]' src={card.img} alt="" />        
+        </div>
+      ))}
+      <button className="bg-orange-400 w-[100px] text-slate-300 p-1">Load More</button>
+      </div>
+      </main>
     </div>
+    
   )
 }

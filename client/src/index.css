@@ -4,4 +4,12 @@
 
 body{
     background-color: rgb(241,245,241);
+    font-family: sans-serif;
+}
+
+.map-section .gmap-frame #gmap_canvas{
+    height:65vh;
+    width:100%;
+    border-radius: 5px;
+    padding:60%
 }

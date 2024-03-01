@@ -5,6 +5,11 @@ import SwiperCore from 'swiper';
 import { Navigation } from "swiper/modules";
 import ListingItem from "../components/ListingItem";
 import 'swiper/css/bundle';
+import ContactUs from "./ContactUs";
+import FloorPlan from "./FloorPlan";
+import Amenities from "./Amenities";
+import Gallery from "./Gallery";
+import Location from "./Location";
 
 export default function Overview() {
   const [offerListings, setOfferListings] = useState([]);
@@ -49,16 +54,16 @@ export default function Overview() {
 
     
   return (
-    <div>
+    <div className="bg-amber-950">
       {/*top*/}
       <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto">
-        <h1 className="text-slate-700 font-bold text-3xl lg:text-6xl">
-          Find your next <span className="text-slate-500">perfect</span> <br />
+        <h1 className="text-amber-700 font-bold text-3xl lg:text-6xl">
+          Find your next <span className="text-yellow-500">perfect</span> <br />
           place with ease
         </h1>
-        <div className="text-gray-400 text-xs sm:text-sm">
-          sterling adobe Estate is the best place to find your next perfect place to
-          live.
+        <div className="text-yellow-600 text-xs sm:text-sm">
+          sterling adobe Estate is the best place to find your next perfect
+          place to live.
           <br />
           we have a wide range of properties for you to choose from
         </div>
@@ -75,14 +80,13 @@ export default function Overview() {
         {offerListings &&
           offerListings.length > 0 &&
           offerListings.map((listing) => (
-            <SwiperSlide>
+            <SwiperSlide key={listing._id}>
               <div
                 style={{
                   background: `url(${listing.imageUrls[0]}) center no-repeat`,
                   backgroundSize: "cover",
                 }}
                 className="h-[700px]"
-                key={listing._id}
               ></div>
             </SwiperSlide>
           ))}
@@ -151,6 +155,96 @@ export default function Overview() {
           </div>
         )}
       </div>
+
+      {/* projectoverview */}
+      <div className="flex flex-wrap  p-28 px-3 max-w-6xl mx-auto">
+        <div className="text-2xl font-semibold  text-center">
+          <h2 className="text-amber-700">Project Overview</h2>
+          <br />
+          <h3 className="text-yellow-600">
+            Premium 2 & 3 BHK Gated community Apartments
+          </h3>
+          <br />
+          <p className="text-yellow-500 text-xs sm:text-sm">
+            SRI VATHSAS STERLING ABODE Gated Community Complex with 3 towers has
+            2 and 3 BHK apartments for sale featuring judiciously utilized super
+            built-up areas to suit every family's preferences. The expertise and
+            experience of the promoters and builders come into play in this
+            prized and premium property, integration of space, luxury, and
+            quality with well thought out convenience and utilities.{" "}
+          </p>
+        </div>
+      </div>
+      <br />
+      <br />
+      <div className="flex  gap-4 items-start   max-w-8xl mx-auto min-w-fit">
+        <div>
+          <h1 className="text-orange-500 font-bold text-3xl lg:text-5xl ">
+            Approximately 12600/- Sq.ft of Exclusivity
+          </h1>
+          <br />
+          <br />
+          <h4 className="text-yellow-200 text-3xl italic ...">Dreams Come Alive</h4>
+          <br />
+          <br />
+          <p className="text-yellow-500 text-xs sm:text-sm">
+            The 12600 Sft Club House with 6 levels, Club VIVA occupies the pride
+            of place in the community. With amazing waterfall mounts, the
+            ambiance is indeed grand. Each of the 6 levels is earmarked for a
+            different purpose and importantly Club VIVA is absolutely private
+            and residents use only. Club VIVA is rejoicing, adding years to
+            life. Whether you are burnt out or want to burn it off, Club VIVA is
+            the place for the family for a buzz of activities and is a promise
+            to keep all your weekends and occasions bright with friends in the
+            company too.
+          </p>
+        </div>
+        <img
+          src="https://sterlingabode.in/wp-content/uploads/2021/08/9.jpg"
+          alt=""
+          className="w-[480px] h-[400px]"
+        />
+      </div>
+      <br/><br/>
+      <div className="flex  gap-4 items-start   max-w-8xl mx-auto min-w-fit">
+      <img
+          src="https://sterlingabode.in/wp-content/uploads/2021/08/9.jpg"
+          alt=""
+          className="w-[480px] h-[400px]"
+        />
+        <div>
+          <h1 className="text-orange-500 font-bold text-3xl lg:text-5xl">Exult in Joy & Celebration</h1>
+          <br />
+          <br />
+          <h4 className="text-yellow-200 text-3xl italic ...">
+            Welcome to 'SRI VATHSA'S STERLING ABODE'
+          </h4>
+          <br/>
+          
+          <p className="text-yellow-500 text-xs sm:text-sm">
+            Welcome to ‘SRI VATHSA’S STERLING ABODE’, the most anticipated
+            project from ‘SRI VATHSA HOMES PVT.LTD’, a name that has a tradition
+            of delivering premium quality homes in Hyderabad. A place of beauty
+            and quiet contemplation, “SRI VATHSA’S STERLING ABODE” offers a
+            tranquil oasis amid the livelier setting of an exotic ambiance and
+            cherubic atmosphere. A magnum opus in the making, ‘SRI VATHSA’S
+            STERLING ABODE” offers a tranquil oasis amid the livelier setting of
+            an exotic ambiance and cherubic atmosphere. A magnum opus in the
+            making,’ SRI VATHSA’S STERLING ABODE’ draws from the serenity and
+            lure of Yapral, punctuating the natural landscape it occupies,
+            creating a unique and unforgettable lifestyle.
+          </p>
+        </div>
+       
+      </div>
+      <br/>
+      <br/>
+      <FloorPlan/>
+      <Amenities/>
+      <Gallery/>
+      <Location/>
+      <ContactUs className='bg-amber-950'/>
+      
     </div>
   );
 }
