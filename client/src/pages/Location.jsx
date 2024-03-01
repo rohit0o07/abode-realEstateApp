@@ -27,7 +27,7 @@ function Location() {
       <div className='gmap-frame'>
       
         <iframe id='gmap-canvas'
-        width="620" height="380"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+        width="620" height="380"  frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" 
         src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=Hyderabad+(Rohit%20business)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
           <a href="https://www.gps.ie/">gps systems</a></iframe>
       </div>
