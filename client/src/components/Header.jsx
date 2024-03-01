@@ -83,7 +83,7 @@ function Header() {
               />
             ) : (
               <li className="sm:inline text-zinc-50 hover:underline">
-                Sign in
+                SIGN IN
               </li>
             )}
           </Link>
